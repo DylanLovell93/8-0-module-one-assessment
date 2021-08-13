@@ -230,7 +230,39 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+  //declare variable for largest box office, set to first movie's amount if we have movies, if not set to null
+  let largest = movies[0] || null;
+  //create loop to iterate through movies
+  for (const currentMovie of movies) {
+    //check if currentMovie's box office amount is > our current largest
+    if (
+      boxOfficeToNum(currentMovie.boxOffice) > boxOfficeToNum(largest.boxOffice)
+    )
+      //if it is, make it the new largest
+      largest = currentMovie;
+  }
+  //after loop, return the name of our largest box office movie if we have one, else return null
+  return largest ? largest.title : largest;
+}
+
+//helper function to convert Box Office strings into numbers
+function boxOfficeToNum(string) {
+  //declare variable to accumulate to, set to empty string
+  let newString = '';
+  //create loop to iterate through our given string
+  for (let i = 0; i < string.length; i++) {
+    //create variable for clarity
+    let currentChar = string[i];
+    //use "isNaN" to check if each character is a number
+    if (!isNaN(currentChar)) {
+      //if it is, add it to our string
+      newString += currentChar;
+    }
+  }
+  //after loop, return newString (as a number)
+  return Number(newString);
+}
 
 // Do not change anything below this line.
 module.exports = {
