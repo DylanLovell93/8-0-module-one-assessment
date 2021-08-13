@@ -105,7 +105,18 @@ function getAverageIMDBRating(movies) {
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+  // object frequency
+  //declare object to accumulate to, set to empty object
+  let frequency = {};
+  //create loop to iterate through movies
+  for (const currentMovie of movies) {
+    //if we've already logged their rating, +1 to it's value, if not, add it to our object and give it a value of 1
+    frequency[currentMovie.rated] = frequency[currentMovie.rated] + 1 || 1;
+  }
+  //after looping, return object
+  return frequency;
+}
 
 /**
  * findById()
