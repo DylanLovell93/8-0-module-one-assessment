@@ -167,7 +167,20 @@ function findById(movies, id) {
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {
+  //declare variable to accumulate to, set to empty array
+  let filteredMovies = [];
+  //create loop to iterate through movies
+  for (const currentMovie of movies) {
+    //check if the currentMovie's genre matches our given genre, case insensitive
+    if (currentMovie.genre.toLowerCase().includes(genre.toLowerCase())) {
+      //if it does, push it into our array
+      filteredMovies.push(currentMovie);
+    }
+  }
+  //after loop, return array;
+  return filteredMovies;
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
